@@ -18,4 +18,4 @@ final.elf:main.o led.o stm32-startup.o
 	$(COMPILER_COMMAND) $(LINK_FLAG) -o $@ $^
 
 clean:
-	rm -rf *.o *.elf
+	rm -rf *.o *.elf *.map
