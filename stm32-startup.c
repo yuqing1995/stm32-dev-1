@@ -223,19 +223,17 @@ void Default_Handler(void)
 void Reset_Handler(void)
 {
     // Copy .data from FLASH to SRAM
-	uint32_t size = &_edata - &_sdata;
+	uint32_t size = (uint32_t)&_edata - (uint32_t)&_sdata;
 	uint8_t *ptDest = (uint8_t*)&_sdata;  //SRAM
 	uint8_t *ptSrc = (uint8_t*)&_etext;  //FLASH
 
 	for (uint32_t i=0; i < size; i++)
 	{
-		*ptDest = *ptSrc;
-		ptDest++;
-		ptSrc++;
+		*ptDest++ = *ptSrc++;
 	}
 
 	// Initialize .bss section to 0 in SRAM
-	size = &_ebss - &_sbss;
+	size = (uint32_t)&_ebss - (uint32_t)&_sbss;
 	ptDest = (uint8_t*)&_sbss;
 
 	for (uint32_t i=0; i < size; i++)
