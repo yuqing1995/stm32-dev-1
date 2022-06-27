@@ -11,7 +11,7 @@ SECTIONS
 {
     .text :
     {
-        *(.is_vector)
+        *(.isr_vector)
         *(.text)
         *(.rodata)
         . = ALIGN(4);
